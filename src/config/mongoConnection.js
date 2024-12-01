@@ -8,10 +8,10 @@ const connectDb= async()=>{
 
 try {
     await mongoose.connect(URI_DB)
-    console.log("conexion exitosa");
+    console.log("Conexion Base de datos exitosa");
 
 } catch (error) {
-    console.log("errorrrr",error);
+    console.log("error",error);
 }
 
 }
