@@ -1,5 +1,7 @@
 
 import{ Router } from "express";
+import{getAllFilms,getFilmById,createFilm,updateFilm,deleteFilm} from "../controllers/filmController.js"
+
 
 const FilmRoutes=Router();
 

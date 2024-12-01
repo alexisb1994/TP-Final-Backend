@@ -11,7 +11,7 @@ const app=express();
 
 app.use(express.json())
 
-app.use("/api/film",FilmRoutes)
+app.use("/api/films",FilmRoutes)
 
 
 
