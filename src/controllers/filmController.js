@@ -31,8 +31,8 @@ const getFilmById=(req,res)=>{
 
 const createFilm=(req,res)=>{
         try {
-     const {title,genre,duration,language,country,releasDate}=req.body
-     if(!title|| !genre|| !duration|| !language|| !country|| !releasDate){
+     const {title,genre,duration,language,country,releaseDate}=req.body
+     if(!title|| !genre|| !duration|| !language|| !country|| !releaseDate){
         return res.status(400).json({error:"bad request, invalid data"})
      }       
 const newFilm =filmModels.createFilm({title,genre,duration,language,country,releasDate});

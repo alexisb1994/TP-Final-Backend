@@ -1,6 +1,18 @@
 //manipulacionde datos,en la base de datos.
 //retorna esta peticion al controller
 
+import mongoose from "mongoose"
+
+const filmSchema =new mongoose.Schema({
+    title: { type: String, required: true }, 
+    genre: { type: String, required: true }, 
+    duration: { type: String},
+    language: { type: String}, 
+    country: { type: String}, 
+    releaseDate: { type: Date}
+})
+
+const Film=mongoose.model("films",filmSchema)
 
 const getAllFilms=(req,res)=>{
 return "buscar todas las peliculas"
