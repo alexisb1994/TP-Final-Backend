@@ -15,10 +15,10 @@ try {
 
 }
 
-const getFilmById=(req,res)=>{
+const getFilmById=async(req,res)=>{
     try {
     const {id}=req.params        
-    const film =filmModels.getFilmById(id)   
+    const film =await filmModels.getFilmById(id)   
 
     if (!film)res.status(404).json({error:"film not found"})
     res.json(film)
@@ -29,13 +29,13 @@ const getFilmById=(req,res)=>{
     
 }
 
-const createFilm=(req,res)=>{
+const createFilm= async(req,res)=>{
         try {
      const {title,genre,duration,language,country,releaseDate}=req.body
      if(!title|| !genre|| !duration|| !language|| !country|| !releaseDate){
         return res.status(400).json({error:"bad request, invalid data"})
      }       
-const newFilm =filmModels.createFilm({title,genre,duration,language,country,releasDate});
+const newFilm =await filmModels.createFilm({title,genre,duration,language,country,releaseDate});
 res.status(201).json(newFilm)
 
         } catch (error) {

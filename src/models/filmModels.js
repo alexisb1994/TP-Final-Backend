@@ -6,7 +6,7 @@ import mongoose from "mongoose"
 const filmSchema =new mongoose.Schema({
     title: { type: String, required: true }, 
     genre: { type: String, required: true }, 
-    duration: { type: String},
+    duration: { type: Number},
     language: { type: String}, 
     country: { type: String}, 
     releaseDate: { type: Date}
@@ -14,25 +14,27 @@ const filmSchema =new mongoose.Schema({
 
 const Film=mongoose.model("films",filmSchema)
 
-const getAllFilms=(req,res)=>{
-return "buscar todas las peliculas"
+const getAllFilms=()=>{
+return Film.find()
    
     }
     
-    const getFilmById=(req,res)=>{
-    return "buscar una pelicula"
-        
+    const getFilmById=(id)=>{
+   return Film.findById(id)
     }
     
-    const createFilm=(req,res)=>{
-  return "crear una pelicula"
+    const createFilm=(newFilm)=>{
+const film=new Film(newFilm)
+return film.save()
+
+
     }
     
-    const updateFilm=(req,res)=>{
+    const updateFilm=()=>{
     return "actualizar una pelicula"
     }
     
-    const deleteFilm=(req,res)=>{
+    const deleteFilm=()=>{
     return "borrar una pelicula"
     }
 
