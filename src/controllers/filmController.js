@@ -5,11 +5,12 @@ import filmModels from "../models/filmModels.js"
 
 // console.log(filmModels);
 
-const getAllFilms=(req,res)=>{
+const getAllFilms=async(req,res)=>{
 try {
-    const films =filmModels.getAllFilms()
+    const films =await filmModels.getAllFilms()
     res.json(films)
 } catch (error) {
+    console.log(error);
     res.status(500).json({error:"server error"})
 }
 
@@ -44,12 +45,12 @@ res.status(201).json(newFilm)
         
 }
 
-const updateFilm=(req,res)=>{
+const updateFilm= async(req,res)=>{
             try {
 
 const {id}=req.params  
 const {body}=req          
-const film= filmModels.updateFilm(id,body);
+const film= await filmModels.updateFilm(id,body);
 if(!film) res.status(404).json({message:"Pelicula No encontrada"});
 res.json(film)                
                 
@@ -59,16 +60,17 @@ res.json(film)
             
 }
 
-const deleteFilm=(req,res)=>{
+const deleteFilm= async(req,res)=>{
                 try {
     const {id}=req.params
-    const film=filmModels.deleteFilm(id);
+    const film= await filmModels.deleteFilm(id);
     
     if (!film) res.status(404).json({message:'Pelicula no encontrada'});
-    res.json({message:'Pelicula Eliminada'});
+    res.json(film);
 
                     
                 } catch (error) {
+                    console.log(error);
                     res.status(500).json({error:"server error"})  
                 }
                 

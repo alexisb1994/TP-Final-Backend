@@ -30,12 +30,12 @@ return film.save()
 
     }
     
-    const updateFilm=()=>{
-    return "actualizar una pelicula"
+    const updateFilm=(id,updateFilm)=>{
+    return Film.findByIdAndUpdate(id,updateFilm,{new:true,runValidators: true})
     }
     
-    const deleteFilm=()=>{
-    return "borrar una pelicula"
+    const deleteFilm=(id)=>{
+    return Film.findByIdAndDelete(id)
     }
 
     export default {getAllFilms,getFilmById,createFilm,updateFilm,deleteFilm}
