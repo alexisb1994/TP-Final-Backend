@@ -3,15 +3,18 @@
 
 import mongoose from "mongoose"
 
-const filmSchema =new mongoose.Schema({
-    title: { type: String, required: true }, 
-    genre: { type: String, required: true }, 
-    duration: { type: Number},
-    language: { type: String}, 
-    country: { type: String}, 
-    releaseDate: { type: Date}
-})
-
+const filmSchema = new mongoose.Schema({
+    title: { type: String, required: true, unique: true },
+    genre: { type: String, required: true },
+    duration: { type: Number },
+    language: { type: String },
+    country: { type: String },
+    releaseDate: { type: Date }
+  }, {
+    versionKey: false
+  });
+  
+  filmSchema.index({ title: 1 }, { unique: true });
 const Film=mongoose.model("films",filmSchema)
 
 const getAllFilms=()=>{
