@@ -8,9 +8,9 @@ const FilmRoutes=Router();
 
 //api/films
 FilmRoutes.get("/",auth,getAllFilms)
-FilmRoutes.get("/:id",getFilmById)
-FilmRoutes.post("/",createFilm)
-FilmRoutes.patch("/:id",updateFilm)
-FilmRoutes.delete("/:id",deleteFilm)
+FilmRoutes.get("/:id",auth,getFilmById)
+FilmRoutes.post("/",auth,createFilm)
+FilmRoutes.patch("/:id",auth,updateFilm)
+FilmRoutes.delete("/:id",auth,deleteFilm)
 
 export {FilmRoutes}

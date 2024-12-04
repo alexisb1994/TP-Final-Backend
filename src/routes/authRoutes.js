@@ -9,6 +9,6 @@ import { auth } from "../middlewares/authMiddleware.js";
 const AuthRoutes=Router();
 
 AuthRoutes.post("/register",register)
-
+AuthRoutes.post("/login",login)
 
 export {AuthRoutes}
