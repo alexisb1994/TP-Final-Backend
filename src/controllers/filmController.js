@@ -1,5 +1,3 @@
-//recibe el input
-//responde al cliente en caso de exito.
 
 import filmModels from "../models/filmModels.js"
 
@@ -67,22 +65,18 @@ res.json(film)
 
 const deleteFilm = async (req, res) => {
     try {
-      const { id } = req.params;  // Obtenemos el ID de la película a borrar
-      
-      // Intentamos eliminar la película
+      const { id } = req.params;  
       const film = await filmModels.deleteFilm(id);
   
-      // Si no se encuentra la película, respondemos con un error 404
-      if (!film) {
+        if (!film) {
         return res.status(404).json({ message: 'Movie not found' });
       }
   
-      // Si la película se encuentra y se elimina correctamente, respondemos con un mensaje de éxito
-      return res.status(200).json({ message: 'Movie deleted successfully' });
+       return res.status(200).json({ message: 'Movie deleted successfully' });
   
     } catch (error) {
       console.log(error);
-      return res.status(500).json({ error: 'Server error' });  // Si ocurre un error en el servidor
+      return res.status(500).json({ error: 'Server error' });  
     }
   };
 

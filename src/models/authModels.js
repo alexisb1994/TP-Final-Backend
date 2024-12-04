@@ -35,12 +35,12 @@ const register = async (dataUser) => {
 
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-      return null; // Ya existe un usuario con este nombre
+      return null; 
     }
 
     const existingEmail = await User.findOne({ email });
     if (existingEmail) {
-      return null; // Ya existe un usuario con este correo
+      return null; 
     }
 
     const alg = await bcryptjs.genSalt(10);
@@ -62,12 +62,12 @@ const login = async (dataUser) => {
 
     const user = await User.findOne({ username });
     if (!user) {
-      return null; // El usuario no existe
+      return null; 
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
-      return null; // Contraseña incorrecta
+      return null;
     }
 
     return user;

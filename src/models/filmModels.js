@@ -1,5 +1,4 @@
-//manipulacionde datos,en la base de datos.
-//retorna esta peticion al controller
+
 
 import mongoose from "mongoose"
 
